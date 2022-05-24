@@ -1,4 +1,4 @@
-#ifndef SvgH
+﻿#ifndef SvgH
 #define SvgH
 
 #include <cstdint>

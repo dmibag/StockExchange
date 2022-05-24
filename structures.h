@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #ifndef structuresH
 #define structuresH
@@ -185,9 +185,9 @@ struct EnterData {
 	Bar close_bar;
 	SampleData sample;
 // calc fields
-	bool good() const;     // прибыльная ли сделка или убыточная
-	bool correct() const;  // были ли ошибки
-	double result() const; // сколько заработано/потрачено денег
+	bool good() const;     // РїСЂРёР±С‹Р»СЊРЅР°СЏ Р»Рё СЃРґРµР»РєР° РёР»Рё СѓР±С‹С‚РѕС‡РЅР°СЏ
+	bool correct() const;  // Р±С‹Р»Рё Р»Рё РѕС€РёР±РєРё
+	double result() const; // СЃРєРѕР»СЊРєРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРѕ/РїРѕС‚СЂР°С‡РµРЅРѕ РґРµРЅРµРі
     std::string title() const;
 
 	std::ostream& PrintHeader(std::ostream& output) const;
@@ -200,7 +200,7 @@ std::istream& Deserialize(std::istream& in, EnterData& val);
 std::ostream& operator<<(std::ostream& output, const EnterData& par);
 
  ////////////////////////////  EXPERIMENTs data ///////////////////////////////
-//не экспортируется в CSV!
+//РЅРµ СЌРєСЃРїРѕСЂС‚РёСЂСѓРµС‚СЃСЏ РІ CSV!
 struct Aggregate {
 	int correct_count{0};
 	int incorrect_count{0};
@@ -215,7 +215,7 @@ void Serialize(const Aggregate& val, std::ostream& out);
 
 std::istream& Deserialize(std::istream& in, Aggregate& val);
 
-// для вывода в окно, не в CSV
+// РґР»СЏ РІС‹РІРѕРґР° РІ РѕРєРЅРѕ, РЅРµ РІ CSV
 std::ostream& operator<<(std::ostream& output, const Aggregate& agg);
 
 struct Agg {

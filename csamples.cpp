@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -10,7 +10,7 @@
 using namespace std;
 
 //////////////////////////////// BaseSample //////////////////////////////////
-/// здесь рабочая область функций, выявляющих паттерны, максимальное количество экспериментов
+/// Р·РґРµСЃСЊ СЂР°Р±РѕС‡Р°СЏ РѕР±Р»Р°СЃС‚СЊ С„СѓРЅРєС†РёР№, РІС‹СЏРІР»СЏСЋС‰РёС… РїР°С‚С‚РµСЂРЅС‹, РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌРєСЃРїРµСЂРёРјРµРЅС‚РѕРІ
 
 optional<vector<SampleData>> BaseSample::Find(BasePatParams pat_params) const {
 	switch(pat_params.id) {
@@ -33,7 +33,7 @@ optional<vector<SampleData>> BaseSample::P3DownLine(BasePatParams pat_params) co
 
 	const FrameBars& H = bars_.H();
 	const FrameBars& D = bars_.D();
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 
 	SampleData ret;
@@ -93,7 +93,7 @@ else ret_sell_true = false;
 optional<vector<SampleData>> BaseSample::P3UpLine(BasePatParams pat_params) const {
 	const FrameBars& H = bars_.H();
 	const FrameBars& D = bars_.D();
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 
 	SampleData ret;
@@ -191,7 +191,7 @@ optional<vector<SampleData>> BaseSample::P3DownLineSide(BasePatParams pat_params
 	if (H.HasClosedBars(inspect_bars_count) == false) return nullopt;
 
 	SampleData ret;
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	ret.buy = true;
 	ret.open_price = pat_params.cur;
@@ -284,7 +284,7 @@ optional<vector<SampleData>> BaseSample::P3UpLineSide(BasePatParams pat_params) 
 	if (H.HasClosedBars(inspect_bars_count) == false) return nullopt;
 
 	SampleData ret;
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	ret.buy = true;
 	ret.open_price = pat_params.cur;
@@ -374,7 +374,7 @@ optional<vector<SampleData>> BaseSample::P3NoLineNar(BasePatParams pat_params) c
 	if (H.HasClosedBars(inspect_bars_count) == false) return nullopt;
 
 	SampleData ret;
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	ret.buy = true;
 	ret.open_price = pat_params.cur;
@@ -441,7 +441,7 @@ optional<vector<SampleData>> BaseSample::P3FollowUp(BasePatParams pat_params) co
 	if (H.HasClosedBars(inspect_bars_count) == false) return nullopt;
 
 	SampleData ret;
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	ret.buy = true;
 	ret.open_price = pat_params.cur;
@@ -549,7 +549,7 @@ optional<vector<SampleData>> BaseSample::P3FollowDown(BasePatParams pat_params) 
 	if (H.HasClosedBars(inspect_bars_count) == false) return nullopt;
 
 	SampleData ret;
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	ret.buy = true;
 	ret.open_price = pat_params.cur;
@@ -658,7 +658,7 @@ optional<vector<SampleData>> BaseSample::P2Up(BasePatParams pat_params) const {
 	const FrameBars& M = bars_.M();
 	const FrameBars& H = bars_.H();
 	const FrameBars& D = bars_.D();
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	SampleData ret;
 
@@ -762,7 +762,7 @@ optional<vector<SampleData>> BaseSample::P2Down(BasePatParams pat_params) const 
 	const FrameBars& M = bars_.M();
 	const FrameBars& H = bars_.H();
 	const FrameBars& D = bars_.D();
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	SampleData ret;
 
@@ -852,7 +852,7 @@ optional<vector<SampleData>> BaseSample::CostUp(BasePatParams pat_params) const 
 	const FrameBars& M = bars_.M();
 	const FrameBars& H = bars_.H();
 	const FrameBars& D = bars_.D();
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	SampleData ret;
 
@@ -947,7 +947,7 @@ optional<vector<SampleData>> BaseSample::CostDown(BasePatParams pat_params) cons
 	const FrameBars& M = bars_.M();
 	const FrameBars& H = bars_.H();
 	const FrameBars& D = bars_.D();
-	Prc prc(10); // для вычитания и сложения с процентом d = d - prc(25);
+	Prc prc(10); // РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ Рё СЃР»РѕР¶РµРЅРёСЏ СЃ РїСЂРѕС†РµРЅС‚РѕРј d = d - prc(25);
 
 	SampleData ret;
 

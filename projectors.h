@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #ifndef projectorsH
 #define projectorsH
@@ -158,7 +158,7 @@ public:
 
 		zoom_ = (height_ - bot_off)/(high_line_ - low_line_);
 //		zoom_ = (height_)/(high_line_ - low_line_);
-		block_width_ = (width_ - off_start_ - off_end_)/(cont_.size() + 1); // один блок добавляем, так как график начинается с 0
+		block_width_ = (width_ - off_start_ - off_end_)/(cont_.size() + 1); // РѕРґРёРЅ Р±Р»РѕРє РґРѕР±Р°РІР»СЏРµРј, С‚Р°Рє РєР°Рє РіСЂР°С„РёРє РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ 0
 	}
 
 private:

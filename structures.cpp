@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -331,20 +331,20 @@ std::istream& Deserialize(std::istream& in, Aggregate& val) {
 	return in;
 }
 
-// для вывода в окно, не в CSV
+// РґР»СЏ РІС‹РІРѕРґР° РІ РѕРєРЅРѕ, РЅРµ РІ CSV
 std::ostream& operator<<(std::ostream& output, const Aggregate& agg) {
 	using namespace std::literals;
 	output
-		<< "Корректных сделок "s << agg.correct_count
+		<< "РљРѕСЂСЂРµРєС‚РЅС‹С… СЃРґРµР»РѕРє "s << agg.correct_count
 		<< " ("s
-		<< "успешных "s << agg.earned_count
-		<< " убыточных "s << agg.spend_count
+		<< "СѓСЃРїРµС€РЅС‹С… "s << agg.earned_count
+		<< " СѓР±С‹С‚РѕС‡РЅС‹С… "s << agg.spend_count
 		<< ")"s
-		<< " ошибок "s << agg.incorrect_count << '\n'
-		<< "Процент успешных "s << agg.earned_count / (agg.earned_count + agg.spend_count) << '\n'
-		<< "Заработано "s << agg.sum << '\n'
-		<< "Макс. просадка "s << agg.max_slump << '\n'
-		<< "Подряд убыточных "s << agg.max_spend_together << '\n'
+		<< " РѕС€РёР±РѕРє "s << agg.incorrect_count << '\n'
+		<< "РџСЂРѕС†РµРЅС‚ СѓСЃРїРµС€РЅС‹С… "s << agg.earned_count / (agg.earned_count + agg.spend_count) << '\n'
+		<< "Р—Р°СЂР°Р±РѕС‚Р°РЅРѕ "s << agg.sum << '\n'
+		<< "РњР°РєСЃ. РїСЂРѕСЃР°РґРєР° "s << agg.max_slump << '\n'
+		<< "РџРѕРґСЂСЏРґ СѓР±С‹С‚РѕС‡РЅС‹С… "s << agg.max_spend_together << '\n'
 	;
 	return output;
 }
@@ -443,7 +443,7 @@ void operator >> (std::string_view line, Bar& dbstr) {
 		arg.vol = std::stoi(std::string(str));
 		std::swap(arg, dbstr);
 	} catch (std::exception &e) {
-		ShowMessage("Ошибка в разборе строки из файла DB: " + line + " : " + UnicodeString(e.what()));
+		ShowMessage("РћС€РёР±РєР° РІ СЂР°Р·Р±РѕСЂРµ СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р° DB: " + line + " : " + UnicodeString(e.what()));
 		throw e;
 	}
 }

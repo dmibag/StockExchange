@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -70,18 +70,18 @@ void __fastcall TForm1::ButtonPrepareDBClick(TObject *Sender)
 	}
 	else return;
 
-    // конвертация TXT в DB
+    // РєРѕРЅРІРµСЂС‚Р°С†РёСЏ TXT РІ DB
 	PrepareDB(CsvFile, DbFile);
 	settings.SetString("db_db_path_name", OpenDialog->FileName);
 
-	// создание маркеров
+	// СЃРѕР·РґР°РЅРёРµ РјР°СЂРєРµСЂРѕРІ
 	auto markers = MakeStartStopDates(OpenDialog->FileName);
 
 	if (markers.size()) {
-		// сохранение маркеров в БД
+		// СЃРѕС…СЂР°РЅРµРЅРёРµ РјР°СЂРєРµСЂРѕРІ РІ Р‘Р”
 		std::ofstream db_out(UniToStr(OpenDialog->FileName + ".markers"), std::ios::binary);
 		Serialize(markers, db_out);
-		// обновление маркеров в интерфейсе
+		// РѕР±РЅРѕРІР»РµРЅРёРµ РјР°СЂРєРµСЂРѕРІ РІ РёРЅС‚РµСЂС„РµР№СЃРµ
 		ComboPeriodStart->Items->Clear();
 		ComboPeriodEnd->Items->Clear();
 		ComboPeriod->Items->Clear();
@@ -215,7 +215,7 @@ void __fastcall TForm1::ButtonTestClick(TObject *Sender)
 void __fastcall TForm1::FormShow(TObject *Sender)
 {
 	Settings settings(IniFileName);
-	// загрузка маркеров в интерфейс
+	// Р·Р°РіСЂСѓР·РєР° РјР°СЂРєРµСЂРѕРІ РІ РёРЅС‚РµСЂС„РµР№СЃ
 	{
 		auto markers = GetCachedMarkers(settings.GetString("db_db_path_name") + ".markers");
 
@@ -230,7 +230,7 @@ void __fastcall TForm1::FormShow(TObject *Sender)
 			}
 		}
 	}
-    // загрузка эксперемента (результаты)
+    // Р·Р°РіСЂСѓР·РєР° СЌРєСЃРїРµСЂРµРјРµРЅС‚Р° (СЂРµР·СѓР»СЊС‚Р°С‚С‹)
 	{
 		std::ifstream db_file(UniToStr(settings.GetString("exp_path_name")), std::ios::binary);
 		if (db_file) {

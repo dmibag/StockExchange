@@ -1,4 +1,4 @@
-#pragma hdrstop
+﻿#pragma hdrstop
 
 #include "svg.h"
 

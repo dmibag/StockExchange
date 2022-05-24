@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 #pragma hdrstop
 
 #include "capprover.h"
@@ -65,7 +65,7 @@ vector<EnterData> Run::Execute(std::pair<int, int> range) const {
 		Bar bar;
 
 		if (SkipIperiod(db_file, bar, start_period)) {
-			// здесь уже есть первый полезный бар в bar
+			// Р·РґРµСЃСЊ СѓР¶Рµ РµСЃС‚СЊ РїРµСЂРІС‹Р№ РїРѕР»РµР·РЅС‹Р№ Р±Р°СЂ РІ bar
 			Bar next_bar;
 			ApproveParams params;
 			Approver approver(bars, type);
@@ -78,7 +78,7 @@ vector<EnterData> Run::Execute(std::pair<int, int> range) const {
 				UpdateAproveParapms(params, &bar, &next_bar);
 
 				if (static_cast<int>(next_bar.datetime.Val) > static_cast<int>(params.date_range.second.Val) && params.end_day == true) {
-					// закрываем все открытые сделки если они есть
+					// Р·Р°РєСЂС‹РІР°РµРј РІСЃРµ РѕС‚РєСЂС‹С‚С‹Рµ СЃРґРµР»РєРё РµСЃР»Рё РѕРЅРё РµСЃС‚СЊ
 					enter.CloseForced(bar);
 				}
 
@@ -133,7 +133,7 @@ vector<BasePatParams> Run::GetBasePatterns(std::pair<int, int> range) const {
 		Bar bar;
 
 		if (SkipIperiod(db_file, bar, start_period)) {
-			// здесь уже есть первый полезный бар в bar
+			// Р·РґРµСЃСЊ СѓР¶Рµ РµСЃС‚СЊ РїРµСЂРІС‹Р№ РїРѕР»РµР·РЅС‹Р№ Р±Р°СЂ РІ bar
 			Bar next_bar;
 			ApproveParams params;
 			Approver approver(bars, type);
@@ -255,7 +255,7 @@ Run::VecKeys Run::CalcKeys(std::pair<int, int> range, double fee) const {
 	}
 	VecKeys result(make_move_iterator(stats.begin()), make_move_iterator(stats.end()));
 	sort(result.begin(), result.end(), [](const auto& lhs, const auto& rhs){
-		return rhs.second.sum < lhs.second.sum; // по убыванию
+		return rhs.second.sum < lhs.second.sum; // РїРѕ СѓР±С‹РІР°РЅРёСЋ
 	});
 	return result;
 }

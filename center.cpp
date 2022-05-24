@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -102,7 +102,7 @@ bool Enter::Trend(const Bars& bars, BarTimeFrame type) const {
 }
 
 void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_typed_bar, const Bar& bar, ApproveParams& params) {
-	if (params.new_day) { // сам проверяет ежедневную очистку
+	if (params.new_day) { // СЃР°Рј РїСЂРѕРІРµСЂСЏРµС‚ РµР¶РµРґРЅРµРІРЅСѓСЋ РѕС‡РёСЃС‚РєСѓ
 		CleanSamples();
 	}
 
@@ -110,7 +110,7 @@ void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_t
 		UpdateExpireSamples();
 	}
 
-	if (enter_) { // в рынке
+	if (enter_) { // РІ СЂС‹РЅРєРµ
 		if (TryClose(bar)) {
 			results_.push_back(move(enter_.value()));
 			enter_.reset();
@@ -124,16 +124,16 @@ void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_t
 			}
 		}
 		if (enter_->sample.follow == FOLLOW::PROFIT && Pass(params)) {
-			// пытаемся сдвинуть стопы или закрыть сделку!
+			// РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРїС‹ РёР»Рё Р·Р°РєСЂС‹С‚СЊ СЃРґРµР»РєСѓ!
 			if (buy) {
-				if (cur_typed_bar.Green() && cur_typed_bar.close > enter_->offset) { // пытаемся сдвинуть стоп
+				if (cur_typed_bar.Green() && cur_typed_bar.close > enter_->offset) { // РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРї
 					enter_->close_bottom = enter_->close_bottom + (cur_typed_bar.close - enter_->offset);
 					enter_->close_top = enter_->close_top + (cur_typed_bar.close - enter_->offset);
 					enter_->offset = cur_typed_bar.close;
 				}
 			}
 			else {
-				if (!cur_typed_bar.Green() && cur_typed_bar.close < enter_->offset) { // пытаемся сдвинуть стоп
+				if (!cur_typed_bar.Green() && cur_typed_bar.close < enter_->offset) { // РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРї
 					enter_->close_bottom = enter_->close_bottom - (enter_->offset - cur_typed_bar.close);
 					enter_->close_top = enter_->close_top - (enter_->offset - cur_typed_bar.close);
 					enter_->offset = cur_typed_bar.close;
@@ -141,14 +141,14 @@ void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_t
 			}
 		}
 		else if (enter_->sample.follow == FOLLOW::LOSS && Pass(params)) {
-			// пытаемся сдвинуть профиты ниже при покупке или закрыть сделку!
+			// РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ РїСЂРѕС„РёС‚С‹ РЅРёР¶Рµ РїСЂРё РїРѕРєСѓРїРєРµ РёР»Рё Р·Р°РєСЂС‹С‚СЊ СЃРґРµР»РєСѓ!
 			if (!buy) {
-				if (/*!cur_typed_bar.Green() && */cur_typed_bar.close < enter_->offset) { // пытаемся сдвинуть стоп
+				if (/*!cur_typed_bar.Green() && */cur_typed_bar.close < enter_->offset) { // РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРї
 					enter_->close_bottom = enter_->close_bottom - (enter_->offset - cur_typed_bar.close);
-					enter_->close_top = enter_->close_top - (enter_->offset - cur_typed_bar.close);  /* тут // */
+					enter_->close_top = enter_->close_top - (enter_->offset - cur_typed_bar.close);  /* С‚СѓС‚ // */
 					enter_->offset = cur_typed_bar.close;
 				}
-				else if (/*cur_typed_bar.Green() &&*/ cur_typed_bar.close > enter_->offset) { // пытаемся сдвинуть стоп
+				else if (/*cur_typed_bar.Green() &&*/ cur_typed_bar.close > enter_->offset) { // РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРї
 					enter_->close_bottom = enter_->close_bottom + (cur_typed_bar.close - enter_->offset);   ///////////////////
 					if (enter_->close_top - enter_->sample.close_top > 2000) {
 						CloseForced(bar);
@@ -157,9 +157,9 @@ void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_t
 					enter_->offset = cur_typed_bar.close;
 				}
 			}
-			else {  // отработано!
+			else {  // РѕС‚СЂР°Р±РѕС‚Р°РЅРѕ!
 
-				if (/*!cur_typed_bar.Green() &&*/ cur_typed_bar.close < enter_->offset) { // пытаемся сдвинуть стоп
+				if (/*!cur_typed_bar.Green() &&*/ cur_typed_bar.close < enter_->offset) { // РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРї
 //					enter_->story_txt = enter_->story_txt + std::to_string(Key(bars, BarTimeFrame::H, cur_typed_bar.close)) + "d,"s;
 					enter_->close_bottom = enter_->close_bottom - (enter_->offset - cur_typed_bar.close);
 					if (enter_->sample.close_bottom - enter_->close_bottom > 2000) {
@@ -168,11 +168,11 @@ void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_t
 					if (enter_->sample.close_bottom - enter_->close_bottom > static_cast<double>(enter_->story_double)) {
 						enter_->story_double = static_cast<int>(enter_->sample.close_bottom - enter_->close_bottom);
 				}
-					enter_->close_top = enter_->close_top - (enter_->offset - cur_typed_bar.close);  /* тут // */
+					enter_->close_top = enter_->close_top - (enter_->offset - cur_typed_bar.close);  /* С‚СѓС‚ // */
 
 					enter_->offset = cur_typed_bar.close;
 				}
-				else if (/*cur_typed_bar.Green() &&*/ cur_typed_bar.close > enter_->offset) { // пытаемся сдвинуть стоп
+				else if (/*cur_typed_bar.Green() &&*/ cur_typed_bar.close > enter_->offset) { // РїС‹С‚Р°РµРјСЃСЏ СЃРґРІРёРЅСѓС‚СЊ СЃС‚РѕРї
 //					enter_->story_txt = enter_->story_txt + std::to_string(Key(bars, BarTimeFrame::H, cur_typed_bar.close)) + "u,"s;
 
 					enter_->close_bottom = enter_->close_bottom + (cur_typed_bar.close - enter_->offset);
@@ -185,7 +185,7 @@ void Enter::Update(const Bars& bars, const Bar& prev_typed_bar, const Bar& cur_t
 		}
 
 	}
-	else { // ожидает, не торгуется
+	else { // РѕР¶РёРґР°РµС‚, РЅРµ С‚РѕСЂРіСѓРµС‚СЃСЏ
 		if (TryEnter(bar)) { // cross error during opening
 			results_.push_back(move(enter_.value()));
 			enter_.reset();
@@ -245,13 +245,13 @@ void Enter::CloseForced(const Bar& bar) {
 }
 
 bool Enter::TryEnter(const Bar& bar) {
-	for (auto it = samples_.begin(); it !=  samples_.end(); ++it) { // можно добавить обратную итерацию, посмотреть что эффективнее, позже...
+	for (auto it = samples_.begin(); it !=  samples_.end(); ++it) { // РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РѕР±СЂР°С‚РЅСѓСЋ РёС‚РµСЂР°С†РёСЋ, РїРѕСЃРјРѕС‚СЂРµС‚СЊ С‡С‚Рѕ СЌС„С„РµРєС‚РёРІРЅРµРµ, РїРѕР·Р¶Рµ...
 		auto & sample_data = it->second;
-		if (bar == sample_data.open_price) { // добавить проверку при покупке или продаже на > <
+		if (bar == sample_data.open_price) { // РґРѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РїСЂРё РїРѕРєСѓРїРєРµ РёР»Рё РїСЂРѕРґР°Р¶Рµ РЅР° > <
 			if (bar != sample_data.close_top && bar != sample_data.close_bottom) {
 				EnterData ent;
-				ent.opened_price = sample_data.open_price; // ну или high low при ><
-				ent.offset = sample_data.open_price; // ну или high low при ><
+				ent.opened_price = sample_data.open_price; // РЅСѓ РёР»Рё high low РїСЂРё ><
+				ent.offset = sample_data.open_price; // РЅСѓ РёР»Рё high low РїСЂРё ><
 				ent.close_top = sample_data.close_top;
 				ent.close_bottom = sample_data.close_bottom;
 				ent.open_bar = bar;

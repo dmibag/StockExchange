@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -256,14 +256,14 @@ std::optional<BasePatParams> PatternCostDown::FindPattern() const {
 	return std::nullopt;
 }
 
-// Экспереминтеруем с паттернами
+// Р­РєСЃРїРµСЂРµРјРёРЅС‚РµСЂСѓРµРј СЃ РїР°С‚С‚РµСЂРЅР°РјРё
 
 Patterns::Patterns(const Bars& bars) : bars_(bars) {
 //	patterns_.push_back(std::make_unique<Pattern3DownLine>(bars_));
 //	patterns_.push_back(std::make_unique<Pattern3UpLine>(bars_));
 //	patterns_.push_back(std::make_unique<Pattern3DownLineSide>(bars_));
 //	patterns_.push_back(std::make_unique<Pattern3UpLineSide>(bars_));
-	//	patterns_.push_back(std::make_unique<Pattern3NoLineNar>(bars_)); // мало встречается, использую
+	//	patterns_.push_back(std::make_unique<Pattern3NoLineNar>(bars_)); // РјР°Р»Рѕ РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ, РёСЃРїРѕР»СЊР·СѓСЋ
 //	patterns_.push_back(std::make_unique<Pattern3FollowUp>(bars_));
 //	patterns_.push_back(std::make_unique<Pattern3FollowDown>(bars_));
 
